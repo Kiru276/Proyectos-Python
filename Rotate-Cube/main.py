@@ -1,24 +1,26 @@
 from ursina import *
 
-class Player(Entity):
+class Cubo(Entity):
+    #Contructor
     def __init__(self):
         super().__init__(
-            parent = scene,
-            model = 'cube',
-            texture = 'jerma.jpg',
-            #rotation = Vec3(30,45,45),
+            parent = scene, # Se establece que padre sera la escena
+            model = 'cube', # Modelo de figura
+            texture = 'jerma.jpg', # Variante: color = color.white,
         )
 
-
+# Actualiza a tiempo real
 def update():
-        test.rotation_x += 30* time.dt
+        test.rotation_x += 30* time.dt 
         test.rotation_y += 30* time.dt
         test.rotation_z += 30* time.dt
 
-Game = Ursina()
+# Inicializa ventana
+Main = Ursina()
 
-test = Player()
+# Crea instancia de clase
+test = Cubo()
 
 
-
-Game.run()
+# Ejecuta el programa
+Main.run()
