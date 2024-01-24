@@ -3,6 +3,8 @@ from ursina.prefabs.first_person_controller import FirstPersonController
 
 app = Ursina()
 
+current_block_type = 'grass'
+
 # Bloque por defecto
 class Voxel(Button):
     def __init__(self, position = (0,0,0)):
@@ -11,23 +13,36 @@ class Voxel(Button):
             position = position,
             model = 'cube',
             origin_y = 0.5,
-            texture = 'grass',
+            texture = current_block_type,
             color = rgb(255,255,255),
             hightlight_color = color.lime,
         )
 
     def input(self,key):
+        global current_block_type
         if self.hovered:
             # Click derecho pone bloque
             if key == 'right mouse down':
                 voxel = Voxel(position = self.position + mouse.normal)
+                voxel.texture = current_block_type
+
             # Click izquierdo destruye bloque
             if key == 'left mouse down':
                 destroy(self)
-            # Pinta un bloque a textura de ladrillo
+
+            if key == '1':
+                current_block_type = 'grass'
+
             if key == '2':
-                self.texture = 'brick'
-            if key == 'escape':
+                current_block_type = 'brick'
+
+            if key == '3':
+                current_block_type = 'grass_tintable'
+
+            if key == '4':
+                current_block_type = 'rainbow'
+
+            if key == '0':
                 quit()
 
 # Tamaño de chuck por defecto
