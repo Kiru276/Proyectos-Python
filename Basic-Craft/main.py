@@ -5,6 +5,12 @@ app = Ursina()
 
 current_block_type = 'grass'
 
+# Crear objeto de texto
+texto = Text(text="" + current_block_type, position=(-0.5, 0.4), scale=2, origin=(0, 0), color=color.brown)
+
+def update():
+        texto.text = "Bloque actual: " + current_block_type
+
 # Bloque por defecto
 class Voxel(Button):
     def __init__(self, position = (0,0,0)):
@@ -17,7 +23,7 @@ class Voxel(Button):
             color = rgb(255,255,255),
             hightlight_color = color.lime,
         )
-
+    
     def input(self,key):
         global current_block_type
         if self.hovered:
@@ -32,18 +38,23 @@ class Voxel(Button):
 
             if key == '1':
                 current_block_type = 'grass'
+                update()
 
             if key == '2':
                 current_block_type = 'brick'
+                update()
 
             if key == '3':
                 current_block_type = 'grass_tintable'
+                update()
 
             if key == '4':
                 current_block_type = 'rainbow'
+                update()
 
             if key == '0':
                 quit()
+
 
 # Tamaño de chuck por defecto
 chuncksize = 16
@@ -52,6 +63,7 @@ chuncksize = 16
 for z in range(chuncksize):
     for x in range(chuncksize):
         voxel = Voxel(position = (x,0,z))
+
 
 # Crea instancia de jugador en primera persona
 player = FirstPersonController()
