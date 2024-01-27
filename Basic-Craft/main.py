@@ -6,10 +6,13 @@ app = Ursina()
 current_block_type = 'grass'
 
 # Crear objeto de texto
-texto = Text(text="" + current_block_type, position=(-0.5, 0.4), scale=2, origin=(0, 0), color=color.brown)
+texto = Text(text="", position=(-0.5, 0.4), scale=2, origin=(0, 0), color=color.brown)
 
-def update():
+# Actualiza el texto del bloque actual
+def updateTextBlock():
         texto.text = "Bloque actual: " + current_block_type
+
+
 
 # Bloque por defecto
 class Voxel(Button):
@@ -38,19 +41,19 @@ class Voxel(Button):
 
             if key == '1':
                 current_block_type = 'grass'
-                update()
+                updateTextBlock()
 
             if key == '2':
                 current_block_type = 'brick'
-                update()
+                updateTextBlock()
 
             if key == '3':
                 current_block_type = 'grass_tintable'
-                update()
+                updateTextBlock()
 
             if key == '4':
                 current_block_type = 'rainbow'
-                update()
+                updateTextBlock()
 
             if key == '0':
                 quit()
