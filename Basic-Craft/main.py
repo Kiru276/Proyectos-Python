@@ -12,7 +12,7 @@ texto = Text(text="", position=(-0.5, 0.4), scale=2, origin=(0, 0), color=color.
 def updateTextBlock():
         texto.text = "Bloque actual: " + current_block_type
 
-
+imagen = Entity(model='quad', texture='grass')
 
 # Bloque por defecto
 class Voxel(Button):
